@@ -1,16 +1,34 @@
 public class Manager {
 
-    private Manager(){}
-    private static Manager manager=new Manager();
+   private String name;
+   private String family;
+   private Long id;
 
-    public static Manager getInstance(){return manager;}
 
+   public String getName(){
+       return name;
+   }
 
-    public void a(){
-        System.out.println("hi");
-    }
-    public void b(){
-        System.out.println("goodbye");
-    }
+   public Manager setName(String name)
+   {
+       this.name=name;
+       return this;
+   }
 
+   public String getFamily(){
+       return family;
+   }
+   public Manager setFamily(String family)
+   {
+       this.family=family;
+       return this;
+   }
+   public Long getId(){
+       return id;
+   }
+   public Manager setId(Long id)
+   {
+       this.id=id;
+       return this;
+   }
 }

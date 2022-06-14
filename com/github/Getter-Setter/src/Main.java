@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-Manager.getInstance().a();
-Manager.getInstance().b();
+Manager manager = new Manager().setName("Parisa").setFamily("abdollahi").setId(545454l);
+        System.out.println(manager.getName()+"\n"+manager.getFamily()+"\n"+manager.getId());
 
     }
 }
