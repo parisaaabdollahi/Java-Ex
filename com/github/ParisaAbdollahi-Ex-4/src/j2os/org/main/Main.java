@@ -1,26 +1,23 @@
 package j2os.org.main;
 
+import com.sun.jersey.api.container.httpserver.HttpServerFactory;
+import com.sun.jersey.api.core.PackagesResourceConfig;
+import com.sun.jersey.api.core.ResourceConfig;
+import com.sun.net.httpserver.HttpServer;
 import j2os.org.entity.Person;
 import j2os.org.error.WrapperMessage;
 import j2os.org.service.PersonService;
+import sun.net.httpserver.HttpServerImpl;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class Main {
     public static void main(String[] args) {
         try {
-          PersonService.getInstance().save(new Person().setId(6L).setName("akbar").setFamily("ghorbani").setSin(458964585L));
-            //PersonService.getInstance().update(new Person().setId(3L).setName("ghazale").setFamily("ghorbani").setSin(45446287L));
-           // PersonService.getInstance().remove(4L);
-
-            List<Person> personList=PersonService.getInstance().findAll();
-            for (Person p: personList){
-                System.out.println(p.getId()+"...."+ p.getName()+"....."+p.getFamily()+"..."+p.getSin());
-                }
-      /* Person person = PersonService.getInstance().findById(1L);
-            System.out.println(person.getId()+"...."+ person.getName()+"....."+person.getFamily()+"..."+person.getSin());
-*/
-
+            ResourceConfig resourceConfig= new PackagesResourceConfig("j2os.org.main");
+            HttpServer httpServer= HttpServerFactory.create("http://localhost:8081/",resourceConfig);
+            httpServer.start();
         } catch (Exception e) {
             WrapperMessage.getErrorMessage(e);
         }

@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="LIB">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../lib/LIB" />
+      <root url="file://$PROJECT_DIR$/../../../../Java Class/1-Intlij Install file/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../lib/LIB" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../Java Class/1-Intlij Install file/lib" recursive="false" />
   </library>
 </component>

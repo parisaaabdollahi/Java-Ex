@@ -2,8 +2,9 @@ package j2os.org.controller;
 
 import j2os.org.common.JSON;
 import j2os.org.entity.Person;
+import j2os.org.error.InputValidationException;
+import j2os.org.error.WrapperMessage;
 import j2os.org.service.PersonService;
-import jdk.security.jarsigner.JarSigner;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,10 +17,50 @@ public class PersonController {
     @Produces("text/plain")
     @GET
     public String save(@QueryParam("name") String name,@QueryParam("family") String family, @QueryParam("sin") String sin) throws Exception {
-if (name== null || family==null){
-throw new InputValidationException();
-}
+        if (name == null || family == null) {
+            throw new InputValidationException();
+        }
         PersonService.getInstance().save(new Person().setName(name).setFamily(family).setSin(Long.parseLong(sin)));
-return JSON.getString()
+        return findAll();
+    }
+
+    @Path("/update")
+    @Produces("text/plain")
+    @GET
+    public String update(@QueryParam("id") String id,@QueryParam("name") String name, @QueryParam("family")String family, @QueryParam("sin") String sin)
+    {
+        try {
+            PersonService.getInstance().update(new Person().setId(Long.parseLong(id)).setName(name).setFamily(family).setSin(Long.parseLong(sin)));
+            return findAll();
+        } catch (Exception e) {
+           return JSON.getString(WrapperMessage.getErrorMessage(e));
+        }
+    }
+    @Path("/remove")
+    @Produces("text/plain")
+    @GET
+
+    public String remove(@QueryParam("id") String id )
+    {
+        try {
+            PersonService.getInstance().remove(Long.parseLong(id));
+            return findAll();
+        } catch (Exception e) {
+            return JSON.getString(WrapperMessage.getErrorMessage(e));
+        }
+    }
+
+@Path("/findAll")
+@Produces("text/plain")
+@GET
+    public String findAll(){
+        try {
+            return JSON.getString(PersonService.getInstance().findAll());
+        } catch (Exception e) {
+            return JSON.getString(WrapperMessage.getErrorMessage(e));
+        }
+    }
 
 }
+
+

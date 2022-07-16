@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="DBCP2">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../lib/DBCP2" />
+      <root url="file://$PROJECT_DIR$/../../../../Java Class/1-Intlij Install file/DBCP2" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../lib/DBCP2" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../Java Class/1-Intlij Install file/DBCP2" recursive="false" />
   </library>
 </component>
