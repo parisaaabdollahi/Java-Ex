@@ -9,18 +9,17 @@ import j2os.org.error.WrapperMessage;
 import j2os.org.service.PersonService;
 import sun.net.httpserver.HttpServerImpl;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class Main {
-    public static void main(String[] args) {
-        try {
-            ResourceConfig resourceConfig= new PackagesResourceConfig("j2os.org.main");
-            HttpServer httpServer= HttpServerFactory.create("http://localhost:8081/",resourceConfig);
+    public static void main(String[] args) throws IOException {
+
+            ResourceConfig resourceConfig = new PackagesResourceConfig("org.j2os.erp.controller");
+            HttpServer httpServer = HttpServerFactory.create("http://localhost:8081/",resourceConfig);
             httpServer.start();
-        } catch (Exception e) {
-            WrapperMessage.getErrorMessage(e);
-        }
+
 
     }
 
