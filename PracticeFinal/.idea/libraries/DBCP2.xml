@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="DBCP2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../com/github/lib/json-simple-1.1.1.jar!/" />
+      <root url="file://$PROJECT_DIR$/../com/github/lib/DBCP2" />
+      <root url="file://$PROJECT_DIR$/../com/github/lib/LIB" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../com/github/lib/DBCP2" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../com/github/lib/LIB" recursive="false" />
+  </library>
+</component>
