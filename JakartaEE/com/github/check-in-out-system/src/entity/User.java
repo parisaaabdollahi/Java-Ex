@@ -3,7 +3,25 @@ package entity;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String name , family , employeeCode,password;
+    private String name;
+    private String family;
+    private String employeeCode;
+    private String password;
+
+    public User() {
+
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public User setRole(String role) {
+        this.role = role;
+        return this;
+    }
+
+    private String role;
 
     public String getName() {
         return name;
@@ -41,14 +59,14 @@ public class User implements Serializable {
         return this;
     }
 
-    public User(String name, String family, String employeeCode, String password) {
+    public User(String name, String family,String role, String employeeCode, String password) {
         this.name = name;
         this.family = family;
         this.employeeCode = employeeCode;
         this.password = password;
     }
 
-    public User(String name, String family) {
+    public User(String name, String family , String role) {
         this.name = name;
         this.family = family;
     }

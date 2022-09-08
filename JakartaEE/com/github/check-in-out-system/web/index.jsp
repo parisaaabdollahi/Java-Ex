@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Home Page</title>
   </head>
   <body>
-  $END$
+  Welcome To Login Page
+  <form action="/login.do">
+    <input type="text" name="employeeCode"/>
+    <input type="password" name="password"/>
+    <input type="submit" value="LOGIN"/>
+  </form>
   </body>
 </html>
