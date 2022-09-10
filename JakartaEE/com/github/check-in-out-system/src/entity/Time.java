@@ -3,16 +3,16 @@ package entity;
 import java.io.Serializable;
 
 public class Time implements Serializable {
-    private String employeeCode;
+    private String username;
     private Float checkIn;
     private Float getCheckout;
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public String getUsername() {
+        return username;
     }
 
-    public Time setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+    public Time setUsername(String username) {
+        this.username = username;
         return this;
     }
 

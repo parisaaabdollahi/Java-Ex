@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String name;
     private String family;
-    private String employeeCode;
+    private String username;
     private String password;
-
+    private String role;
     public User() {
 
     }
@@ -21,7 +21,6 @@ public class User implements Serializable {
         return this;
     }
 
-    private String role;
 
     public String getName() {
         return name;
@@ -41,12 +40,12 @@ public class User implements Serializable {
         return this;
     }
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public String getUsername() {
+        return username;
     }
 
-    public User setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+    public User setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -59,15 +58,17 @@ public class User implements Serializable {
         return this;
     }
 
-    public User(String name, String family,String role, String employeeCode, String password) {
+    public User(String name, String family,String role, String username, String password) {
         this.name = name;
         this.family = family;
-        this.employeeCode = employeeCode;
+        this.username = username;
         this.password = password;
+        this.role=role;
     }
 
     public User(String name, String family , String role) {
         this.name = name;
         this.family = family;
+        this.role=role;
     }
 }

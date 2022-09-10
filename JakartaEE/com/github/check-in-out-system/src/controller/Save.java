@@ -10,18 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/login.do")
-public class Login extends HttpServlet {
+@WebServlet("/save.do")
+public class Save extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = new User().setUsername(req.getParameter("username")).setPassword(req.getParameter("password"));
         try {
-            UserService.getInstance().login(user);
-            req.getSession().setAttribute("user", user);
-            resp.sendRedirect("/" + user.getRole());
+            UserService.getInstance().save(new User().setName(req.getParameter("name")).setFamily(req.getParameter("family"))
+                    .setUsername(req.getParameter("username")).setPassword(req.getParameter("password")).setRole(req.getParameter("role")));
+            resp.sendRedirect("/findAll.do");
         } catch (Exception e) {
             e.printStackTrace();
-            resp.getWriter().println("KHATA");
         }
     }
 }
