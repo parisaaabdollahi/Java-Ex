@@ -22,7 +22,7 @@ public class UserDA implements AutoCloseable {
     }
 
     public User selectByEmployeeCodeAndPassword(User user) throws Exception {
-        preparedStatement = connection.prepareStatement("select * from users where username=? and password=?");
+        preparedStatement = connection.prepareStatement("select * from sys where username=? and password=?");
         preparedStatement.setString(1, user.getUsername());
         preparedStatement.setString(2, user.getPassword());
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -32,39 +32,45 @@ public class UserDA implements AutoCloseable {
     }
 
     public List<User> selectAll() throws Exception {
-        preparedStatement = connection.prepareStatement("select * from users ");
+        preparedStatement = connection.prepareStatement("select * from sys ");
         ResultSet resultSet = preparedStatement.executeQuery();
         List<User> list = new ArrayList<>();
         while (resultSet.next()) {
-            User person = new User().setName(resultSet.getString("name")).setFamily(resultSet.getString("family")).setUsername(resultSet.getString("username")).setPassword(resultSet.getString("password")).setRole(resultSet.getString("role"));
+            User person = new User().setId(resultSet.getLong("id")).setName(resultSet.getString("name")).setFamily(resultSet.getString("family")).setUsername(resultSet.getString("username")).setPassword(resultSet.getString("password")).setRole(resultSet.getString("role"));
             list.add(person);
         }
         return list;
     }
 
     public void insert(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("insert into users (name ,family, username , password , role) values (?,?,?,?,?)");
-        preparedStatement.setString(1, user.getName());
-        preparedStatement.setString(2, user.getFamily());
-        preparedStatement.setString(3, user.getUsername());
-        preparedStatement.setString(4, user.getPassword());
-        preparedStatement.setString(5, user.getRole());
+        preparedStatement = connection.prepareStatement("select sys_seq nextval id from dual ");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        user.setId(resultSet.getLong("id"));
+        preparedStatement = connection.prepareStatement("insert into sys (id,name ,family, username , password , role) values (?,?,?,?,?,?)");
+        preparedStatement.setLong(1, user.getId());
+        preparedStatement.setString(2, user.getName());
+        preparedStatement.setString(3, user.getFamily());
+        preparedStatement.setString(4, user.getUsername());
+        preparedStatement.setString(5, user.getPassword());
+        preparedStatement.setString(6, user.getRole());
         preparedStatement.executeUpdate();
     }
 
     public void update(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("update users set name =? , family = ? , username=? , password= ? , role=?");
-        preparedStatement.setString(1, user.getName());
-        preparedStatement.setString(2, user.getFamily());
-        preparedStatement.setString(3, user.getUsername());
-        preparedStatement.setString(4, user.getPassword());
-        preparedStatement.setString(5, user.getRole());
+        preparedStatement = connection.prepareStatement("update sys set id=? , name =? , family = ? , username=? , password= ? , role=?");
+        preparedStatement.setLong(1, user.getId());
+        preparedStatement.setString(2, user.getName());
+        preparedStatement.setString(3, user.getFamily());
+        preparedStatement.setString(4, user.getUsername());
+        preparedStatement.setString(5, user.getPassword());
+        preparedStatement.setString(6, user.getRole());
         preparedStatement.executeUpdate();
     }
 
     public void delete(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("delete users where username=?");
-        preparedStatement.setString(1, user.getUsername());
+        preparedStatement = connection.prepareStatement("delete sys where username=?");
+        preparedStatement.setLong(1, user.getId());
         preparedStatement.executeUpdate();
     }
 

@@ -3,13 +3,20 @@ package entity;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    private Long id;
     private String name;
     private String family;
     private String username;
     private String password;
     private String role;
-    public User() {
 
+    public Long getId() {
+        return id;
+    }
+
+    public User setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getRole() {
@@ -58,17 +65,4 @@ public class User implements Serializable {
         return this;
     }
 
-    public User(String name, String family,String role, String username, String password) {
-        this.name = name;
-        this.family = family;
-        this.username = username;
-        this.password = password;
-        this.role=role;
-    }
-
-    public User(String name, String family , String role) {
-        this.name = name;
-        this.family = family;
-        this.role=role;
-    }
 }
