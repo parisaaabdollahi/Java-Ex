@@ -9,7 +9,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">hi ${sessionScope.user.name}</a>
+            <a class="navbar-brand" href="#">hi ${sessionScope.user.username}</a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="/person/findAll.do">PERSON</a></li>

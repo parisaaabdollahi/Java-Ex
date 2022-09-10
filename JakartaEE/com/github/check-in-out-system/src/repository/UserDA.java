@@ -32,7 +32,7 @@ public class UserDA implements AutoCloseable {
     }
 
     public List<User> selectAll() throws Exception {
-        preparedStatement = connection.prepareStatement("select * from sys ");
+        preparedStatement = connection.prepareStatement("select * from sys order by id");
         ResultSet resultSet = preparedStatement.executeQuery();
         List<User> list = new ArrayList<>();
         while (resultSet.next()) {
@@ -43,7 +43,7 @@ public class UserDA implements AutoCloseable {
     }
 
     public void insert(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("select sys_seq nextval id from dual ");
+        preparedStatement = connection.prepareStatement("select sys_seq.nextval id from dual ");
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
         user.setId(resultSet.getLong("id"));
@@ -58,18 +58,19 @@ public class UserDA implements AutoCloseable {
     }
 
     public void update(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("update sys set id=? , name =? , family = ? , username=? , password= ? , role=?");
-        preparedStatement.setLong(1, user.getId());
-        preparedStatement.setString(2, user.getName());
-        preparedStatement.setString(3, user.getFamily());
-        preparedStatement.setString(4, user.getUsername());
-        preparedStatement.setString(5, user.getPassword());
-        preparedStatement.setString(6, user.getRole());
+        preparedStatement = connection.prepareStatement("update sys set name =? , family = ? , username=? , password= ? , role=? where id=?");
+
+        preparedStatement.setString(1, user.getName());
+        preparedStatement.setString(2, user.getFamily());
+        preparedStatement.setString(3, user.getUsername());
+        preparedStatement.setString(4, user.getPassword());
+        preparedStatement.setString(5, user.getRole());
+        preparedStatement.setLong(6, user.getId());
         preparedStatement.executeUpdate();
     }
 
     public void delete(User user) throws SQLException {
-        preparedStatement = connection.prepareStatement("delete sys where username=?");
+        preparedStatement = connection.prepareStatement("delete sys where id=?");
         preparedStatement.setLong(1, user.getId());
         preparedStatement.executeUpdate();
     }

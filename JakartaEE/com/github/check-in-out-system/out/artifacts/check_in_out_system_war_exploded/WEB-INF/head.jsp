@@ -5,7 +5,7 @@
 <script src="/assets/bootstrap.min.js"></script>
 <style>
     .fit {
-        width: 60%;
+        width: 100%;
     }
 
     .center {

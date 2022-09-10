@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Login extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = new User().setUsername(req.getParameter("username")).setPassword(req.getParameter("password"));
+        User user = new User().setName(req.getParameter("name")).setUsername(req.getParameter("username")).setPassword(req.getParameter("password"));
         try {
             UserService.getInstance().login(user);
             req.getSession().setAttribute("user", user);

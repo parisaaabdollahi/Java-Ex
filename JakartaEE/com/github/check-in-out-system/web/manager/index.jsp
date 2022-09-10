@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <%--
   Created by IntelliJ IDEA.
   User: Parisa
@@ -16,22 +19,22 @@
     <div class="panel panel-primary ">
         <div class="panel-heading center ">Hi dear Boss</div>
         <div class="panel-body">
-<form action="save.do"  class="form-group">
+<form action="/manager/save.do"  class="form-group">
     <input placeholder="enter name" type="text" name="name" class="form-control"/>
     <br/>
     <input placeholder="enter family" type="text" name="family" class="form-control"/>
     <br/>
-    <input placeholder="enter username" type="text" name="family" class="form-control"/>
+    <input placeholder="enter username" type="text" name="username" class="form-control"/>
     <br/>
-    <input placeholder="enter password" type="text" name="family" class="form-control"/>
+    <input placeholder="enter password" type="text" name="password" class="form-control"/>
     <br/>
-    <input placeholder="enter role" type="text" name="family" class="form-control"/>
+    <input placeholder="enter role" type="text" name="role" class="form-control"/>
     <br/>
     <input type="submit" value="SAVE" class="btn btn-primary fit"/>
 </form>
             <table class="table table-striped table-hover fit">
                 <tr>
-
+                    <td>ID</td>
                     <td>NAME</td>
                     <td>FAMILY</td>
                     <td>USERNAME</td>
@@ -42,14 +45,15 @@
                 </tr>
                 <c:forEach items="${requestScope.list}" var="user">
                     <tr>
-                        <form action="/update.do">
-                            <td><input type="text" class="form-control fit" name="id" value="${user.name}" /></td>
-                            <td><input type="text" class="form-control fit" name="name" value="${user.family}"/></td>
-                            <td><input type="text" class="form-control fit" name="family" value="${user.username}"/></td>
-                            <td><input type="text" class="form-control fit" name="family" value="${user.password}"/></td>
-                            <td><input type="text" class="form-control fit" name="family" value="${user.role}"/></td>
+                        <form action="/manager/update.do">
+                            <td><input type="text" class="form-control fit" name="id" value="${user.id}" readonly/></td>
+                            <td><input type="text" class="form-control fit" name="name" value="${user.name}" /></td>
+                            <td><input type="text" class="form-control fit" name="family" value="${user.family}"/></td>
+                            <td><input type="text" class="form-control fit" name="username" value="${user.username}"/></td>
+                            <td><input type="text" class="form-control fit" name="password" value="${user.password}"/></td>
+                            <td><input type="text" class="form-control fit" name="role" value="${user.role}"/></td>
                             <td><input type="submit" value="UPDATE" class="btn btn-warning fit"></td>
-                            <td><input type="button" onclick="removeuser(${user.username})" value="REMOVE"
+                            <td><input type="button" onclick="removeUser(${user.id})" value="REMOVE"
                                        class="btn btn-danger fit"></td>
                         </form>
                     </tr>
@@ -59,9 +63,10 @@
         </div>
     </div>
     <script>
-        function removeUser(username) {
+        function removeUser(id) {
             if (confirm('are you sure?'))
-                window.location = '/remove.do?id=' + username;
+                window.location = '/manager/remove.do?id=' + id;
+
         }
     </script>
 </div>
