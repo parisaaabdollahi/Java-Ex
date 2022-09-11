@@ -1,6 +1,7 @@
 package repository;
 
 import JDBD.JDBC;
+import entity.Time;
 import entity.User;
 import exception.InvalidEmployeeCodeAndPassword;
 
@@ -36,8 +37,8 @@ public class UserDA implements AutoCloseable {
         ResultSet resultSet = preparedStatement.executeQuery();
         List<User> list = new ArrayList<>();
         while (resultSet.next()) {
-            User person = new User().setId(resultSet.getLong("id")).setName(resultSet.getString("name")).setFamily(resultSet.getString("family")).setUsername(resultSet.getString("username")).setPassword(resultSet.getString("password")).setRole(resultSet.getString("role"));
-            list.add(person);
+            User user = new User().setId(resultSet.getLong("id")).setName(resultSet.getString("name")).setFamily(resultSet.getString("family")).setUsername(resultSet.getString("username")).setPassword(resultSet.getString("password")).setRole(resultSet.getString("role"));
+            list.add(user);
         }
         return list;
     }
@@ -73,6 +74,32 @@ public class UserDA implements AutoCloseable {
         preparedStatement = connection.prepareStatement("delete sys where id=?");
         preparedStatement.setLong(1, user.getId());
         preparedStatement.executeUpdate();
+    }
+
+
+
+    public void insertTime(User user , Time time) throws SQLException {
+        preparedStatement = connection.prepareStatement("select time_seq.nextval id from dual ");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        user.setId(resultSet.getLong("id"));
+        preparedStatement= connection.prepareStatement("insert into time (id , username, login , logout) values (?,?,?,?)");
+        preparedStatement.setLong(1,time.getId());
+        preparedStatement.setString(2,user.getUsername());
+        preparedStatement.setLong(3,time.getLogin());
+        preparedStatement.setLong(4,time.getLogout());
+        preparedStatement.executeUpdate();
+    }
+
+    public List<Time> selectTime() throws SQLException {
+        preparedStatement=connection.prepareStatement("select * from time order by id");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Time> timeList = new ArrayList<>();
+        while (resultSet.next()){
+            Time time = new Time().setId(resultSet.getLong("id")).setUsername(resultSet.getString("username")).setLogin(resultSet.getLong("login")).setLogout(resultSet.getLong("logout"));
+            timeList.add(time);
+        }
+        return timeList;
     }
 
     public void commit() throws SQLException {

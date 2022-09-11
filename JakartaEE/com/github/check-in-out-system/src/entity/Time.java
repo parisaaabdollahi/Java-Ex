@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Time implements Serializable {
     private Long id;
     private String username;
-    private Float checkIn;
-    private Float getCheckout;
+    private long login;
+    private long logout;
 
     public String getUsername() {
         return username;
@@ -26,21 +26,21 @@ public class Time implements Serializable {
         return this;
     }
 
-    public Float getCheckIn() {
-        return checkIn;
+    public long getLogin() {
+        return login;
     }
 
-    public Time setCheckIn(Float checkIn) {
-        this.checkIn = checkIn;
+    public Time setLogin(long login) {
+        this.login = login;
         return this;
     }
 
-    public Float getGetCheckout() {
-        return getCheckout;
+    public long getLogout() {
+        return logout;
     }
 
-    public Time setGetCheckout(Float getCheckout) {
-        this.getCheckout = getCheckout;
+    public Time setLogout(long logout) {
+        this.logout = logout;
         return this;
     }
 }

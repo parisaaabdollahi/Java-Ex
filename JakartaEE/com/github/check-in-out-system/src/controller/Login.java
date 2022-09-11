@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Time;
 import entity.User;
 import service.UserService;
 
@@ -14,10 +15,14 @@ import java.io.IOException;
 public class Login extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         User user = new User().setName(req.getParameter("name")).setUsername(req.getParameter("username")).setPassword(req.getParameter("password"));
-        try {
+        Time time =new Time();
+        try{
             UserService.getInstance().login(user);
             req.getSession().setAttribute("user", user);
+            time.setLogin(req.getSession().getCreationTime());
+
             resp.sendRedirect("/" + user.getRole());
 
         } catch (Exception e) {

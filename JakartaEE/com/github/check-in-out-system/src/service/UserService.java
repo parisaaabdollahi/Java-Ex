@@ -1,8 +1,11 @@
 package service;
 
+import entity.Time;
 import entity.User;
+import org.apache.tomcat.util.descriptor.web.TaglibDescriptorImpl;
 import repository.UserDA;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
@@ -45,6 +48,19 @@ public class UserService {
     public List<User> findAll() throws Exception {
         try (UserDA userDA = new UserDA()) {
             return userDA.selectAll();
+        }
+    }
+
+    public void saveTime(User user , Time time) throws Exception {
+        try (UserDA userDA = new UserDA()) {
+            userDA.insertTime(user,time);
+            userDA.commit();
+        }
+    }
+    public List<Time> findTime() throws Exception {
+        try (UserDA userDA = new UserDA()) {
+            return userDA.selectTime();
+
         }
     }
 }
