@@ -17,7 +17,7 @@
       <div class="panel-heading center ">LOGIN PLEASE</div>
       <div class="panel-body">
 
-  <form action="/login.do" class="form-group ">
+  <form   action="/login.do" class="form-group ">
     <input placeholder="enter your Employee Code" type="text" name="username" class="form-control "/>
     <br/>
     <input placeholder="enter your Password" type="password" name="password" class="form-control "/>
@@ -27,6 +27,5 @@
       </div>
     </div>
   </div>
-
   </body>
 </html>

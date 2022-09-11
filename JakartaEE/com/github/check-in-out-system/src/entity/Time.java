@@ -3,12 +3,22 @@ package entity;
 import java.io.Serializable;
 
 public class Time implements Serializable {
+    private Long id;
     private String username;
     private Float checkIn;
     private Float getCheckout;
 
     public String getUsername() {
         return username;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Time setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public Time setUsername(String username) {

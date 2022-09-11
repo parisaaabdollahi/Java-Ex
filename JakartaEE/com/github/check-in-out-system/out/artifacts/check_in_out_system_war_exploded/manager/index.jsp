@@ -32,6 +32,10 @@
     <br/>
     <input type="submit" value="SAVE" class="btn btn-primary fit"/>
 </form>
+
+            <input type="button" onclick="showResult()" value="RESULT" width="50%" class="btn-success"/>
+            <br/>
+            <br/>
             <table class="table table-striped table-hover fit">
                 <tr>
                     <td>ID</td>
@@ -67,6 +71,9 @@
             if (confirm('are you sure?'))
                 window.location = '/manager/remove.do?id=' + id;
 
+        }
+        function showResult(){
+location.href ='/manager/findAll.do';
         }
     </script>
 </div>

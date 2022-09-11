@@ -19,6 +19,7 @@ public class Login extends HttpServlet {
             UserService.getInstance().login(user);
             req.getSession().setAttribute("user", user);
             resp.sendRedirect("/" + user.getRole());
+
         } catch (Exception e) {
             e.printStackTrace();
             resp.getWriter().println("KHATA");
