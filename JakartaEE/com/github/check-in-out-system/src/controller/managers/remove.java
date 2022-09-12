@@ -1,4 +1,4 @@
-package controller.manager;
+package controller.managers;
 
 import entity.User;
 import service.UserService;

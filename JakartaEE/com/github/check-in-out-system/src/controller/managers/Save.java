@@ -1,5 +1,6 @@
-package controller.manager;
+package controller.managers;
 
+import entity.Time;
 import entity.User;
 import service.UserService;
 
@@ -17,6 +18,7 @@ public class Save extends HttpServlet {
         try {
             UserService.getInstance().save(new User().setName(req.getParameter("name")).setFamily(req.getParameter("family"))
                     .setUsername(req.getParameter("username")).setPassword(req.getParameter("password")).setRole(req.getParameter("role")));
+            UserService.getInstance().saveTime(new User().setUsername(req.getParameter("username")),new Time().setId(Long.parseLong(req.getParameter("id"))).setLogin(req.getSession().getCreationTime()).setLogout(req.getSession().getLastAccessedTime()));
             resp.sendRedirect("/manager/findAll.do");
         } catch (Exception e) {
             e.printStackTrace();

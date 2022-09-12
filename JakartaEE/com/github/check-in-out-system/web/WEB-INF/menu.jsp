@@ -12,8 +12,8 @@
             <a class="navbar-brand" href="#">hi ${sessionScope.user.username}</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/person/findAll.do">PERSON</a></li>
-            <li><a href="/car/findAll.do">CAR</a></li>
+            <li><a href="/manager/logout.do">LOGOUT</a></li>
+
         </ul>
     </div>
 </nav>
