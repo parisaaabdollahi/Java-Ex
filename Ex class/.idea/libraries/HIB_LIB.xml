@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="HIB-LIB">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../Java Class/5th session/SESSION5/HIB-LIB" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../Java Class/5th session/SESSION5/HIB-LIB" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../Java Class/5th session/SESSION5/HIB-LIB" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../Java Class/5th session/SESSION5/HIB-LIB" recursive="false" type="SOURCES" />
+  </library>
+</component>

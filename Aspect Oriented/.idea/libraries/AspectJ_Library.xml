@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="AspectJ-Library">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../Java Class/1-Intlij Install file/AspectJ-Library" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../Java Class/1-Intlij Install file/AspectJ-Library" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../Java Class/1-Intlij Install file/AspectJ-Library" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../Java Class/1-Intlij Install file/AspectJ-Library" recursive="false" type="SOURCES" />
+  </library>
+</component>
